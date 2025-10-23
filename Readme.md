@@ -1,11 +1,14 @@
-# 🏁 Desafio de programação - Vaga Front-End 🏁
+## Inicializando o projeto
+- Adicione a sua `GOOGLE_API_KEY` no arquivo `.env.development` 
+- `npm install`
+- `npm run dev
 
-**Este teste tem por objetivos principais avaliar:**
-
-- Habilidades no desenvolvimento frontend
-- Conceitos de UI e UX aplicados
-
-****
+### TODO:
+- DTOs e tipagem do retorno da API
+- Adicionar React Testing Lib para testar os componentes
+- Refatorar camada de data - é possivel generalizar os hooks existentes
+- Paginação dos resultados da busca
+- Requisitos extras
 
 ## Instruções
 
@@ -32,10 +35,10 @@ O layout da **home** não precisa ser exatamente como o do wireframe. Você pode
 
 **Requisitos esperados na entrega do teste**
 
-- [ ] Fornecer um mecanismo para o usuário poder pesquisar vídeos
-- [ ] Possuir home page que exiba algum conteúdo interessante para uma plataforma de vídeos
-- [ ] Fornecer uma estrutura de gerência do estado da aplicação
-- [ ] Possuir histórico das buscas realizadas (persistir localmente)
+- [x] Fornecer um mecanismo para o usuário poder pesquisar vídeos
+- [x] Possuir home page que exiba algum conteúdo interessante para uma plataforma de vídeos
+- [x] Fornecer uma estrutura de gerência do estado da aplicação
+- [x] Possuir histórico das buscas realizadas (persistir localmente)
 
 **Requisitos extras** 
 
