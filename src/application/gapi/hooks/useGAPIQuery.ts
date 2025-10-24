@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 
-const useGAPIQuery = (queryKey: string[], queryFn, enabled = false) => {
+const useGAPIQuery = (queryKey: string[], queryFn, enabled?) => {
   const { status, data, error } = useQuery({
     queryKey,
     queryFn,
-    enabled,
+    enabled: enabled ?? typeof queryFn === "function",
   });
 
   return {

@@ -1,26 +1,23 @@
-import { useGAPIQuery } from "../hooks/useGAPIQuery.ts";
+import { useGAPIQuery } from "../../gapi/hooks/useGAPIQuery.ts";
 import { useGoogleClient } from "../../gapi/hooks/useGoogleClient.tsx";
-
-const useFetchVideos = (id: string) => {
-  const { client } = useGoogleClient();
-  return client
-    ? () =>
-        client?.youtube.videos.list({
-          part: "snippet,contentDetails,statistics,player",
-          id,
-        })
-    : new Promise((resolve) => resolve(null));
-};
+import { buildQueryFN } from "../index";
 
 const WATCH_VIDEO_QUERY_KEY = "watchVideos";
 
+const useFetchVideos = (id: string) => {
+  const { client } = useGoogleClient();
+  return buildQueryFN(
+    client,
+    client?.youtube.videos.list({
+      part: "snippet,contentDetails,statistics,player",
+      id,
+    }),
+  );
+};
+
 const useFetchWatchVideos = (id: string) => {
   const fetchVideoById = useFetchVideos(id);
-  const response = useGAPIQuery(
-    [WATCH_VIDEO_QUERY_KEY, id],
-    fetchVideoById,
-    typeof fetchVideoById === "function",
-  );
+  const response = useGAPIQuery([WATCH_VIDEO_QUERY_KEY, id], fetchVideoById);
   return {
     ...response,
     data: response.data?.result?.items,

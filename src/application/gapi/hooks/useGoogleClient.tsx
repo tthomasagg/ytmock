@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { gAPIKey } from "../../index.ts";
 
+const GAPI_URL = import.meta.env.VITE_GOOGLE_API_URL;
+
 type GoogleClient = typeof gapi.client;
 
 const useGoogleClient = (): GoogleClient => {
@@ -10,9 +12,7 @@ const useGoogleClient = (): GoogleClient => {
     async function loadClient() {
       gapi?.client.setApiKey(gAPIKey);
       try {
-        await gapi?.client.load(
-          "https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest",
-        );
+        await gapi?.client.load(GAPI_URL);
 
         setClient(gapi?.client);
       } catch (err) {
